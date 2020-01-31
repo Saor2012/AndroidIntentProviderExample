@@ -8,7 +8,7 @@ public interface MainContract {
 
         void toast(String messag);
 
-        void sendImage(String base64);
+        void sendImage(byte[] base64);
     }
 
     interface Presenter extends BasePresenter<View>{

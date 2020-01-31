@@ -71,8 +71,8 @@ public class MainPresenter implements MainContract.Presenter {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] byteArray = byteArrayOutputStream .toByteArray();
-            String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-            view.sendImage(encoded);
+            //String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            view.sendImage(byteArray);
         }else {
             view.toast("Error image null method send Presenter");
         }

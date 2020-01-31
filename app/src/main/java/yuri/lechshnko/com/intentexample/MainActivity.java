@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -50,11 +51,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void sendImage(String base64) {
-        startActivityForResult(new Intent()
-                .setClassName("yuri.lechshnko.com.intentexample",
-                        "yuri.lechshnko.com.intentexample.MainActivity")
-                .putExtra(REQUEST_ACTION, base64), REQUEST_CODE);
+    public void sendImage(byte[] base64) {
+        String path = "C:\\Users\\sy-12\\AndroidStudioProjects\\AndroidIntentNewExample\\app\\src\\main\\java\\yuri\\lechshnko\\com\\intentexample";
+        Uri app2 = Uri.parse(path), app2Class = Uri.parse(path + "/MainActivity");
+        startActivityForResult(new Intent() //Intent.ACTION_VIEW, app2
+            .setClassName("com.example.androidreciveintentexample",
+                   "com.example.androidreciveintentexample.MainActivity")
+            .putExtra(REQUEST_ACTION, base64), REQUEST_CODE);
     }
 
     @Override
