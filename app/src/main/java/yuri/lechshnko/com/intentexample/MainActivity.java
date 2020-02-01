@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE){
             if (resultCode == RESULT_OK){
-                if (data != null && data.getStringExtra(RESULT_ACTION) != null){
-                    String base64 = data.getStringExtra(RESULT_ACTION);
+                if (data != null && data.getByteArrayExtra(RESULT_ACTION) != null){
+                    //String base64 = data.getStringExtra(RESULT_ACTION);
+                    byte[] response = data.getByteArrayExtra(RESULT_ACTION);
                 }
             }
         }
@@ -52,9 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void sendImage(byte[] base64) {
-        String path = "C:\\Users\\sy-12\\AndroidStudioProjects\\AndroidIntentNewExample\\app\\src\\main\\java\\yuri\\lechshnko\\com\\intentexample";
-        Uri app2 = Uri.parse(path), app2Class = Uri.parse(path + "/MainActivity");
-        startActivityForResult(new Intent() //Intent.ACTION_VIEW, app2
+        startActivityForResult(new Intent()
             .setClassName("com.example.androidreciveintentexample",
                    "com.example.androidreciveintentexample.MainActivity")
             .putExtra(REQUEST_ACTION, base64), REQUEST_CODE);

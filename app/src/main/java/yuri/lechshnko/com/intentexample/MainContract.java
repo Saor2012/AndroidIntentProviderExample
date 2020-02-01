@@ -2,6 +2,8 @@ package yuri.lechshnko.com.intentexample;
 
 import android.graphics.Bitmap;
 
+import io.reactivex.Single;
+
 public interface MainContract {
     interface View{
         void setImage(Bitmap image);
@@ -15,5 +17,7 @@ public interface MainContract {
         void init();
 
         void sendImage();
+
+        Single<Bitmap> getImage(byte[] byteArray);
     }
 }

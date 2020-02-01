@@ -65,6 +65,14 @@ public class MainPresenter implements MainContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Single<Bitmap> getImage(byte[] byteArray) {
+        return Single.defer(() -> {
+            Bitmap image = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            return Single.just(image);
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
     @Override
     public void sendImage() {
         if (image != null){
